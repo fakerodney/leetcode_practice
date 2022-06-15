@@ -1,7 +1,4 @@
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class practice {
     /*
@@ -23,4 +20,73 @@ public class practice {
         }
         return answer;
     }
+
+    /*
+        https://leetcode.cn/problems/longest-palindromic-substring/ 最长回文字符串
+
+     */
+
+
+    public String longestPalindrome_005(String s) {
+        return null;
+    }
+
+
+    /*
+        https://leetcode.cn/problems/valid-parentheses/ 有效括号
+        使用stack ， 对于每种情况分别处理
+
+     */
+    public boolean isValid_020(String s) {
+        Stack <Character> parentheses = new Stack<>();
+        for (int i = 0; i < s.length(); i++){
+            switch (s.charAt(i)){
+                case ('('):
+                    parentheses.push('(');
+                    break;
+                case ('['): parentheses.push('[');
+                    break;
+                case ('{'): parentheses.push('{');
+                    break;
+                case (')'):
+                    if (parentheses.empty()){return  false;}//check null, otherwise cannot pass ')'
+                    if (parentheses.peek() == '(') {
+                        parentheses.pop();
+                        break;
+                    }else{
+                        return false;
+                    }
+                //-----------
+                case (']'):
+                    if (parentheses.empty()){return  false;}
+                    if (parentheses.peek() == '[') {
+                        parentheses.pop();
+                        break;
+                    }else{
+                        return false;
+                    }
+                //-----------
+                case ('}'):
+                    if (parentheses.empty()){return  false;}
+                    if (parentheses.peek() == '{') {
+                        parentheses.pop();
+                        break;
+                    }else{
+                        return false;
+                    }
+                }
+            }
+        if (!parentheses.empty())return false;
+        return true;
+    }
+
+    public static void main(String[] args) {
+        practice test = new practice();
+        String test020 = "]";
+        System.out.println(test.isValid_020(test020));
+    }
+
+
+
+
 }

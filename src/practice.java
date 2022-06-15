@@ -4,8 +4,11 @@ import java.util.Map;
 import java.util.Set;
 
 public class practice {
-    //2022.6.14
-    public int[] twoSum_01(int []sums, int target){
+    /*
+        https://leetcode.cn/problems/two-sum/ 两数之和
+        2022.6.14
+     */
+    public int[] twoSum_001(int []sums, int target){
         int [] answer = new int [2];
         //hashmap 存入这个int， 如果找不到 （target - 其value）
         HashMap<Integer,Integer> searchmap = new HashMap();

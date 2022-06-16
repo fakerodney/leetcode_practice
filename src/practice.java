@@ -3,6 +3,7 @@ import java.util.*;
 public class practice {
     /*
         https://leetcode.cn/problems/two-sum/ 两数之和
+        ---------------------------------------------------------------------------------------
         2022.6.14
      */
     public int[] twoSum_001(int []sums, int target){
@@ -22,20 +23,59 @@ public class practice {
     }
 
     /*
-        https://leetcode.cn/problems/longest-palindromic-substring/ 最长回文字符串
+        https://leetcode.cn/problems/merge-two-sorted-lists/ 合并两个有序链表
+        2022.6.16
+        TODO: TRY RECURSION
+---------------------------------------------------------------------------------------
 
      */
 
+     // Definition for singly-linked list.
+     public class ListNode {
+         int val;
+         ListNode next;
+         ListNode() {}
+         ListNode(int val) { this.val = val; }
+         ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+     }
+    public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
+        ListNode answernode = new ListNode(-1);
+        //dummy node that points to the front, give it a value so that it won't be null
+        ListNode head = answernode;
+        while (list1!=null || list2!=null){
+            //finish if one of the lists are zero
+            if (list1==null){
+                answernode.next = list2;
+                break;
+            }
+            if (list2==null){
+                answernode.next = list1;
+                break;
+            }
+            //prolong the answernode: Notice, use the new Listnode instead of setting each value
+            if (list1.val<= list2.val){
+                answernode.next = new ListNode(list1.val);
+                answernode = answernode.next;
+                list1 = list1.next;
+            } else {
+                answernode.next = new ListNode(list2.val);
+                answernode = answernode.next;
+                list2 = list2.next;
+            }
 
-    public String longestPalindrome_005(String s) {
-        return null;
+        }
+        return head.next;
+
     }
+
+
+
 
 
     /*
         https://leetcode.cn/problems/valid-parentheses/ 有效括号
         使用stack ， 对于每种情况分别处理
-
+---------------------------------------------------------------------------------------
      */
     public boolean isValid_020(String s) {
         Stack <Character> parentheses = new Stack<>();
@@ -79,7 +119,7 @@ public class practice {
         if (!parentheses.empty())return false;
         return true;
     }
-
+//---------------------------------------------------------------------------------------
     public static void main(String[] args) {
         practice test = new practice();
         String test020 = "]";

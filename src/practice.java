@@ -90,6 +90,24 @@ public class practice {
     }
 
 
+    /*
+        https://leetcode.cn/problems/climbing-stairs/solution 爬楼梯
+        dp
+        2022/6/18
+     */
+    public int climbStairs_070(int n) {
+
+        int [] dp = new int [n];
+        if (n==1) return 1;
+        dp [0] = 1; //注意这里对应一层
+        dp [1] = 2; //对应二层（楼梯）
+        for (int i = 2 ; i < n ; i++){
+            dp[i] = dp[i-1] + dp[i-2];
+        }
+        return dp[n-1];
+    }
+
+
 
 
     /*

@@ -38,7 +38,7 @@ public class practice {
          ListNode(int val) { this.val = val; }
          ListNode(int val, ListNode next) { this.val = val; this.next = next; }
      }
-    public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
+    public ListNode mergeTwoLists_021(ListNode list1, ListNode list2) {
         ListNode answernode = new ListNode(-1);
         //dummy node that points to the front, give it a value so that it won't be null
         ListNode head = answernode;
@@ -67,7 +67,27 @@ public class practice {
         return head.next;
 
     }
+    //----------------------------------------------------------------------------------
 
+    /*
+        https://leetcode.cn/problems/maximum-subarray/comments/, 最大子序列和
+        dp
+        2022/6/18
+     */
+    public int maxSubArray_051(int[] nums) {
+        int [] dp = new int[nums.length];
+        dp[0] = nums[0];
+        int result = nums[0];
+        for (int i = 1; i < nums.length; i++) {
+            dp[i] = Math.max(dp[i - 1] + nums[i], nums[i]);
+            System.out.println("result"+ result + "dp:" + dp[i]);
+            //这一步很简单，算的是以n结尾的最长子序列和
+            result = Math.max(result, dp[i]);
+            //很关键，需要再做一次比较来找到所有子序列和中最大的
+        }
+        return result;
+
+    }
 
 
 
@@ -123,7 +143,9 @@ public class practice {
     public static void main(String[] args) {
         practice test = new practice();
         String test020 = "]";
-        System.out.println(test.isValid_020(test020));
+        int[] test051 = new int[] {10,-1,-1,10};
+        test.maxSubArray_051(test051);
+       // System.out.println(test.isValid_020(test020));
     }
 
 
